@@ -286,8 +286,8 @@ type LoginOptions struct {
 
 //AddTrackersOptions contains all options for /addTrackers endpoint
 type AddTrackersOptions struct {
-	Hash string
-	Trackers string[]
+	Hash     string
+	Trackers []string
 }
 
 //EditTrackerOptions contains all options for /editTracker endpoint
@@ -299,6 +299,6 @@ type EditTrackerOptions struct {
 
 //RemoveTrackersOptions contains all options for /removeTrackers endpoint
 type RemoveTrackersOptions struct {
-	Hash string
-	Trackers string[]
+	Hash     string
+	Trackers []string
 }
