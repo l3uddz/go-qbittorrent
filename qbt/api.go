@@ -239,7 +239,7 @@ func (client *Client) Login(opts LoginOptions) (err error) {
 
 	// add the cookie to cookie jar to authenticate later requests
 	if cookies := resp.Cookies(); len(cookies) > 0 {
-		cookieURL, _ := url.Parse("http://localhost:8080")
+		cookieURL, _ := url.Parse(client.URL)
 		client.Jar.SetCookies(cookieURL, cookies)
 		// create a new client with the cookie jar and replace the old one
 		// so that all our later requests are authenticated
