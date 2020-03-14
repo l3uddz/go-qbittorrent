@@ -1,2 +1,14 @@
-./main.go
-./.idea/*
+# misc
+/.idea/
+/.vscode/
+
+# configuration
+config.json
+config.yaml
+*.db
+
+# vendor files
+/vendor/
+
+# dist folder
+/dist/
