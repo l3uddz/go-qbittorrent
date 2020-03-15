@@ -4,74 +4,77 @@ package qbt
 type BasicTorrent struct {
 	Category               string  `json:"category"`
 	CompletionOn           int64   `json:"completion_on"`
-	Dlspeed                int     `json:"dlspeed"`
-	Eta                    int     `json:"eta"`
+	Dlspeed                int64   `json:"dlspeed"`
+	Eta                    int64   `json:"eta"`
 	ForceStart             bool    `json:"force_start"`
 	Hash                   string  `json:"hash"`
 	Name                   string  `json:"name"`
-	NumComplete            int     `json:"num_complete"`
-	NumIncomplete          int     `json:"num_incomplete"`
-	NumLeechs              int     `json:"num_leechs"`
-	NumSeeds               int     `json:"num_seeds"`
-	Priority               int     `json:"priority"`
-	Progress               int     `json:"progress"`
+	NumComplete            int64   `json:"num_complete"`
+	NumIncomplete          int64   `json:"num_incomplete"`
+	NumLeechs              int64   `json:"num_leechs"`
+	NumSeeds               int64   `json:"num_seeds"`
+	Priority               int64   `json:"priority"`
+	Progress               int64   `json:"progress"`
 	Ratio                  float32 `json:"ratio"`
 	SavePath               string  `json:"save_path"`
 	SeqDl                  bool    `json:"seq_dl"`
-	Size                   int     `json:"size"`
+	Size                   int64   `json:"size"`
+	Downloaded             int64   `json:"downloaded"`
+	Uploaded               int64   `json:"uploaded"`
 	State                  string  `json:"state"`
 	SuperSeeding           bool    `json:"super_seeding"`
-	Upspeed                int     `json:"upspeed"`
+	Upspeed                int64   `json:"upspeed"`
 	FirstLastPiecePriority bool    `json:"f_l_piece_prio"`
+	Tracker                string  `json:"tracker"`
 }
 
 //Torrent holds a torrent object from qbittorrent
 //with more information than BasicTorrent
 type Torrent struct {
-	AdditionDate       int     `json:"addition_date"`
+	AdditionDate       int64   `json:"addition_date"`
 	Comment            string  `json:"comment"`
-	CompletionDate     int     `json:"completion_date"`
+	CompletionDate     int64   `json:"completion_date"`
 	CreatedBy          string  `json:"created_by"`
-	CreationDate       int     `json:"creation_date"`
-	DlLimit            int     `json:"dl_limit"`
-	DlSpeed            int     `json:"dl_speed"`
-	DlSpeedAvg         int     `json:"dl_speed_avg"`
-	Eta                int     `json:"eta"`
-	LastSeen           int     `json:"last_seen"`
-	NbConnections      int     `json:"nb_connections"`
-	NbConnectionsLimit int     `json:"nb_connections_limit"`
-	Peers              int     `json:"peers"`
-	PeersTotal         int     `json:"peers_total"`
-	PieceSize          int     `json:"piece_size"`
-	PiecesHave         int     `json:"pieces_have"`
-	PiecesNum          int     `json:"pieces_num"`
-	Reannounce         int     `json:"reannounce"`
+	CreationDate       int64   `json:"creation_date"`
+	DlLimit            int64   `json:"dl_limit"`
+	DlSpeed            int64   `json:"dl_speed"`
+	DlSpeedAvg         int64   `json:"dl_speed_avg"`
+	Eta                int64   `json:"eta"`
+	LastSeen           int64   `json:"last_seen"`
+	NbConnections      int64   `json:"nb_connections"`
+	NbConnectionsLimit int64   `json:"nb_connections_limit"`
+	Peers              int64   `json:"peers"`
+	PeersTotal         int64   `json:"peers_total"`
+	PieceSize          int64   `json:"piece_size"`
+	PiecesHave         int64   `json:"pieces_have"`
+	PiecesNum          int64   `json:"pieces_num"`
+	Reannounce         int64   `json:"reannounce"`
 	SavePath           string  `json:"save_path"`
-	SeedingTime        int     `json:"seeding_time"`
-	Seeds              int     `json:"seeds"`
-	SeedsTotal         int     `json:"seeds_total"`
+	SeedingTime        int64   `json:"seeding_time"`
+	Seeds              int64   `json:"seeds"`
+	SeedsTotal         int64   `json:"seeds_total"`
 	ShareRatio         float32 `json:"share_ratio"`
-	TimeElapsed        int     `json:"time_elapsed"`
-	TotalDl            int     `json:"total_downloaded"`
-	TotalDlSession     int     `json:"total_downloaded_session"`
-	TotalSize          int     `json:"total_size"`
-	TotalUl            int     `json:"total_uploaded"`
-	TotalUlSession     int     `json:"total_uploaded_session"`
-	TotalWasted        int     `json:"total_wasted"`
-	UpLimit            int     `json:"up_limit"`
-	UpSpeed            int     `json:"up_speed"`
-	UpSpeedAvg         int     `json:"up_speed_avg"`
+	TimeElapsed        int64   `json:"time_elapsed"`
+	TotalDl            int64   `json:"total_downloaded"`
+	TotalDlSession     int64   `json:"total_downloaded_session"`
+	TotalSize          int64   `json:"total_size"`
+	TotalUl            int64   `json:"total_uploaded"`
+	TotalUlSession     int64   `json:"total_uploaded_session"`
+	TotalWasted        int64   `json:"total_wasted"`
+	UpLimit            int64   `json:"up_limit"`
+	UpSpeed            int64   `json:"up_speed"`
+	UpSpeedAvg         int64   `json:"up_speed_avg"`
 }
 
 //Tracker holds a tracker object from qbittorrent
 type Tracker struct {
 	Msg           string `json:"msg"`
-	NumPeers      int    `json:"num_peers"`
-	NumSeeds      int    `json:"num_seeds"`
-	NumLeeches    int    `json:"num_leeches"`
-	NumDownloaded int    `json:"num_downloaded"`
-	Tier          int    `json:"tier"`
-	Status        int    `json:"status"`
+	NumPeers      int64  `json:"num_peers"`
+	NumSeeds      int64  `json:"num_seeds"`
+	NumLeeches    int64  `json:"num_leeches"`
+	NumDownloaded int64  `json:"num_downloaded"`
+	Tier          int64  `json:"tier"`
+	Status        int64  `json:"status"`
 	URL           string `json:"url"`
 }
 
@@ -85,10 +88,10 @@ type TorrentFile struct {
 	IsSeed       bool    `json:"is_seed"`
 	Name         string  `json:"name"`
 	Availability float32 `json:"availability"`
-	Priority     int     `json:"priority"`
-	Progress     int     `json:"progress"`
-	Size         int     `json:"size"`
-	PieceRange   []int   `json:"piece_range"`
+	Priority     int64   `json:"priority"`
+	Progress     int64   `json:"progress"`
+	Size         int64   `json:"size"`
+	PieceRange   []int64 `json:"piece_range"`
 }
 
 //Sync holds the sync response struct which contains
@@ -96,18 +99,18 @@ type TorrentFile struct {
 type Sync struct {
 	Categories  []string `json:"categories"`
 	FullUpdate  bool     `json:"full_update"`
-	Rid         int      `json:"rid"`
+	Rid         int64    `json:"rid"`
 	ServerState struct {
 		ConnectionStatus  string `json:"connection_status"`
-		DhtNodes          int    `json:"dht_nodes"`
-		DlInfoData        int    `json:"dl_info_data"`
-		DlInfoSpeed       int    `json:"dl_info_speed"`
-		DlRateLimit       int    `json:"dl_rate_limit"`
+		DhtNodes          int64  `json:"dht_nodes"`
+		DlInfoData        int64  `json:"dl_info_data"`
+		DlInfoSpeed       int64  `json:"dl_info_speed"`
+		DlRateLimit       int64  `json:"dl_rate_limit"`
 		Queueing          bool   `json:"queueing"`
-		RefreshInterval   int    `json:"refresh_interval"`
-		UpInfoData        int    `json:"up_info_data"`
-		UpInfoSpeed       int    `json:"up_info_speed"`
-		UpRateLimit       int    `json:"up_rate_limit"`
+		RefreshInterval   int64  `json:"refresh_interval"`
+		UpInfoData        int64  `json:"up_info_data"`
+		UpInfoSpeed       int64  `json:"up_info_speed"`
+		UpRateLimit       int64  `json:"up_rate_limit"`
 		UseAltSpeedLimits bool   `json:"use_alt_speed_limits"`
 	} `json:"server_state"`
 	Torrents map[string]Torrent `json:"torrents"`
@@ -125,7 +128,7 @@ type Preferences struct {
 	Locale                             string                 `json:"locale"`
 	CreateSubfolderEnabled             bool                   `json:"create_subfolder_enabled"`
 	StartPausedEnabled                 bool                   `json:"start_paused_enabled"`
-	AutoDeleteMode                     int                    `json:"auto_delete_mode"`
+	AutoDeleteMode                     int64                  `json:"auto_delete_mode"`
 	PreallocateAll                     bool                   `json:"preallocate_all"`
 	IncompleteFilesExt                 bool                   `json:"incomplete_files_ext"`
 	AutoTMMEnabled                     bool                   `json:"auto_tmm_enabled"`
@@ -149,47 +152,47 @@ type Preferences struct {
 	AutorunEnabled                     bool                   `json:"autorun_enabled"`
 	AutorunProgram                     string                 `json:"autorun_program"`
 	QueueingEnabled                    bool                   `json:"queueing_enabled"`
-	MaxActiveDls                       int                    `json:"max_active_downloads"`
-	MaxActiveTorrents                  int                    `json:"max_active_torrents"`
-	MaxActiveUls                       int                    `json:"max_active_uploads"`
+	MaxActiveDls                       int64                  `json:"max_active_downloads"`
+	MaxActiveTorrents                  int64                  `json:"max_active_torrents"`
+	MaxActiveUls                       int64                  `json:"max_active_uploads"`
 	DontCountSlowTorrents              bool                   `json:"dont_count_slow_torrents"`
-	SlowTorrentDlRateThreshold         int                    `json:"slow_torrent_dl_rate_threshold"`
-	SlowTorrentUlRateThreshold         int                    `json:"slow_torrent_ul_rate_threshold"`
-	SlowTorrentInactiveTimer           int                    `json:"slow_torrent_inactive_timer"`
+	SlowTorrentDlRateThreshold         int64                  `json:"slow_torrent_dl_rate_threshold"`
+	SlowTorrentUlRateThreshold         int64                  `json:"slow_torrent_ul_rate_threshold"`
+	SlowTorrentInactiveTimer           int64                  `json:"slow_torrent_inactive_timer"`
 	MaxRatioEnabled                    bool                   `json:"max_ratio_enabled"`
 	MaxRatio                           float64                `json:"max_ratio"`
 	MaxRatioAct                        bool                   `json:"max_ratio_act"`
-	ListenPort                         int                    `json:"listen_port"`
+	ListenPort                         int64                  `json:"listen_port"`
 	UPNP                               bool                   `json:"upnp"`
 	RandomPort                         bool                   `json:"random_port"`
-	DlLimit                            int                    `json:"dl_limit"`
-	UlLimit                            int                    `json:"up_limit"`
-	MaxConnections                     int                    `json:"max_connec"`
-	MaxConnectionsPerTorrent           int                    `json:"max_connec_per_torrent"`
-	MaxUls                             int                    `json:"max_uploads"`
-	MaxUlsPerTorrent                   int                    `json:"max_uploads_per_torrent"`
+	DlLimit                            int64                  `json:"dl_limit"`
+	UlLimit                            int64                  `json:"up_limit"`
+	MaxConnections                     int64                  `json:"max_connec"`
+	MaxConnectionsPerTorrent           int64                  `json:"max_connec_per_torrent"`
+	MaxUls                             int64                  `json:"max_uploads"`
+	MaxUlsPerTorrent                   int64                  `json:"max_uploads_per_torrent"`
 	UTPEnabled                         bool                   `json:"enable_utp"`
 	LimitUTPRate                       bool                   `json:"limit_utp_rate"`
 	LimitTCPOverhead                   bool                   `json:"limit_tcp_overhead"`
 	LimitLANPeers                      bool                   `json:"limit_lan_peers"`
-	AltDlLimit                         int                    `json:"alt_dl_limit"`
-	AltUlLimit                         int                    `json:"alt_up_limit"`
+	AltDlLimit                         int64                  `json:"alt_dl_limit"`
+	AltUlLimit                         int64                  `json:"alt_up_limit"`
 	SchedulerEnabled                   bool                   `json:"scheduler_enabled"`
-	ScheduleFromHour                   int                    `json:"schedule_from_hour"`
-	ScheduleFromMin                    int                    `json:"schedule_from_min"`
-	ScheduleToHour                     int                    `json:"schedule_to_hour"`
-	ScheduleToMin                      int                    `json:"schedule_to_min"`
-	SchedulerDays                      int                    `json:"scheduler_days"`
+	ScheduleFromHour                   int64                  `json:"schedule_from_hour"`
+	ScheduleFromMin                    int64                  `json:"schedule_from_min"`
+	ScheduleToHour                     int64                  `json:"schedule_to_hour"`
+	ScheduleToMin                      int64                  `json:"schedule_to_min"`
+	SchedulerDays                      int64                  `json:"scheduler_days"`
 	DHTEnabled                         bool                   `json:"dht"`
 	DHTSameAsBT                        bool                   `json:"dhtSameAsBT"`
-	DHTPort                            int                    `json:"dht_port"`
+	DHTPort                            int64                  `json:"dht_port"`
 	PexEnabled                         bool                   `json:"pex"`
 	LSDEnabled                         bool                   `json:"lsd"`
-	Encryption                         int                    `json:"encryption"`
+	Encryption                         int64                  `json:"encryption"`
 	AnonymousMode                      bool                   `json:"anonymous_mode"`
-	ProxyType                          int                    `json:"proxy_type"`
+	ProxyType                          int64                  `json:"proxy_type"`
 	ProxyIP                            string                 `json:"proxy_ip"`
-	ProxyPort                          int                    `json:"proxy_port"`
+	ProxyPort                          int64                  `json:"proxy_port"`
 	ProxyPeerConnections               bool                   `json:"proxy_peer_connections"`
 	ForceProxy                         bool                   `json:"force_proxy"`
 	ProxyAuthEnabled                   bool                   `json:"proxy_auth_enabled"`
@@ -200,7 +203,7 @@ type Preferences struct {
 	IPFilterTrackers                   string                 `json:"ip_filter_trackers"`
 	WebUIDomainList                    string                 `json:"web_ui_domain_list"`
 	WebUIAddress                       string                 `json:"web_ui_address"`
-	WebUIPort                          int                    `json:"web_ui_port"`
+	WebUIPort                          int64                  `json:"web_ui_port"`
 	WebUIUPNPEnabled                   bool                   `json:"web_ui_upnp"`
 	WebUIUsername                      string                 `json:"web_ui_username"`
 	WebUIPassword                      string                 `json:"web_ui_password"`
@@ -215,46 +218,46 @@ type Preferences struct {
 	SSLKey                             string                 `json:"ssl_key"`
 	SSLCert                            string                 `json:"ssl_cert"`
 	DynDNSEnabled                      bool                   `json:"dyndns_enabled"`
-	DynDNSService                      int                    `json:"dyndns_service"`
+	DynDNSService                      int64                  `json:"dyndns_service"`
 	DynDNSUsername                     string                 `json:"dyndns_username"`
 	DynDNSPassword                     string                 `json:"dyndns_password"`
 	DynDNSDomain                       string                 `json:"dyndns_domain"`
-	RSSRefreshInterval                 int                    `json:"rss_refresh_interval"`
-	RSSMaxArtPerFeed                   int                    `json:"rss_max_articles_per_feed"`
+	RSSRefreshInterval                 int64                  `json:"rss_refresh_interval"`
+	RSSMaxArtPerFeed                   int64                  `json:"rss_max_articles_per_feed"`
 	RSSProcessingEnabled               bool                   `json:"rss_processing_enabled"`
 	RSSAutoDlEnabled                   bool                   `json:"rss_auto_downloading_enabled"`
 }
 
 //Log
 type Log struct {
-	ID        int    `json:"id"`
+	ID        int64  `json:"id"`
 	Message   string `json:"message"`
-	Timestamp int    `json:"timestamp"`
-	Type      int    `json:"type"`
+	Timestamp int64  `json:"timestamp"`
+	Type      int64  `json:"type"`
 }
 
 //PeerLog
 type PeerLog struct {
-	ID        int    `json:"id"`
+	ID        int64  `json:"id"`
 	IP        string `json:"ip"`
 	Blocked   bool   `json:"blocked"`
-	Timestamp int    `json:"timestamp"`
+	Timestamp int64  `json:"timestamp"`
 	reason    string `json:"reason"`
 }
 
 //Info
 type Info struct {
 	ConnectionStatus  string `json:"connection_status"`
-	DHTNodes          int    `json:"dht_nodes"`
-	DlInfoData        int    `json:"dl_info_data"`
-	DlInfoSpeed       int    `json:"dl_info_speed"`
-	DlRateLimit       int    `json:"dl_rate_limit"`
-	UlInfoData        int    `json:"up_info_data"`
-	UlInfoSpeed       int    `json:"up_info_speed"`
-	UlRateLimit       int    `json:"up_rate_limit"`
+	DHTNodes          int64  `json:"dht_nodes"`
+	DlInfoData        int64  `json:"dl_info_data"`
+	DlInfoSpeed       int64  `json:"dl_info_speed"`
+	DlRateLimit       int64  `json:"dl_rate_limit"`
+	UlInfoData        int64  `json:"up_info_data"`
+	UlInfoSpeed       int64  `json:"up_info_speed"`
+	UlRateLimit       int64  `json:"up_rate_limit"`
 	Queueing          bool   `json:"queueing"`
 	UseAltSpeedLimits bool   `json:"use_alt_speed_limits"`
-	RefreshInterval   int    `json:"refresh_interval"`
+	RefreshInterval   int64  `json:"refresh_interval"`
 }
 
 type TorrentInfo struct {
@@ -262,8 +265,8 @@ type TorrentInfo struct {
 	Category string // => optional
 	Sort     string // => optional
 	Reverse  bool   // => optional
-	Limit    int    // => optional (no negatives)
-	Offset   int    // => optional (negatives allowed)
+	Limit    int64  // => optional (no negatives)
+	Offset   int64  // => optional (negatives allowed)
 	Hashes   string // separated by | => optional
 }
 
