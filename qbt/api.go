@@ -230,7 +230,7 @@ func (client *Client) Login(opts LoginOptions) (err error) {
 		"password": opts.Password,
 	}
 
-	resp, err := client.post("api/v2/auth/login", params)
+	resp, err := client.get("api/v2/auth/login", params)
 	if err != nil {
 		return wrapper.Wrap(err, "failed login request")
 	} else if resp.StatusCode == 403 {
