@@ -74,7 +74,7 @@ type Tracker struct {
 	NumSeeds      int64  `json:"num_seeds"`
 	NumLeeches    int64  `json:"num_leeches"`
 	NumDownloaded int64  `json:"num_downloaded"`
-	Tier          int64  `json:"tier"`
+	Tier          string `json:"tier"`
 	Status        int64  `json:"status"`
 	URL           string `json:"url"`
 }
