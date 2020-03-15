@@ -21,6 +21,7 @@ type BasicTorrent struct {
 	Size                   int64   `json:"size"`
 	Downloaded             int64   `json:"downloaded"`
 	Uploaded               int64   `json:"uploaded"`
+	AmountLeft             int64   `json:"amount_left"`
 	State                  string  `json:"state"`
 	SuperSeeding           bool    `json:"super_seeding"`
 	Upspeed                int64   `json:"upspeed"`
