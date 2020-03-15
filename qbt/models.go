@@ -2,27 +2,27 @@ package qbt
 
 //BasicTorrent holds a basic torrent object from qbittorrent
 type BasicTorrent struct {
-	Category               string `json:"category"`
-	CompletionOn           int64  `json:"completion_on"`
-	Dlspeed                int    `json:"dlspeed"`
-	Eta                    int    `json:"eta"`
-	ForceStart             bool   `json:"force_start"`
-	Hash                   string `json:"hash"`
-	Name                   string `json:"name"`
-	NumComplete            int    `json:"num_complete"`
-	NumIncomplete          int    `json:"num_incomplete"`
-	NumLeechs              int    `json:"num_leechs"`
-	NumSeeds               int    `json:"num_seeds"`
-	Priority               int    `json:"priority"`
-	Progress               int    `json:"progress"`
-	Ratio                  int    `json:"ratio"`
-	SavePath               string `json:"save_path"`
-	SeqDl                  bool   `json:"seq_dl"`
-	Size                   int    `json:"size"`
-	State                  string `json:"state"`
-	SuperSeeding           bool   `json:"super_seeding"`
-	Upspeed                int    `json:"upspeed"`
-	FirstLastPiecePriority bool   `json:"f_l_piece_prio"`
+	Category               string  `json:"category"`
+	CompletionOn           int64   `json:"completion_on"`
+	Dlspeed                int     `json:"dlspeed"`
+	Eta                    int     `json:"eta"`
+	ForceStart             bool    `json:"force_start"`
+	Hash                   string  `json:"hash"`
+	Name                   string  `json:"name"`
+	NumComplete            int     `json:"num_complete"`
+	NumIncomplete          int     `json:"num_incomplete"`
+	NumLeechs              int     `json:"num_leechs"`
+	NumSeeds               int     `json:"num_seeds"`
+	Priority               int     `json:"priority"`
+	Progress               int     `json:"progress"`
+	Ratio                  float32 `json:"ratio"`
+	SavePath               string  `json:"save_path"`
+	SeqDl                  bool    `json:"seq_dl"`
+	Size                   int     `json:"size"`
+	State                  string  `json:"state"`
+	SuperSeeding           bool    `json:"super_seeding"`
+	Upspeed                int     `json:"upspeed"`
+	FirstLastPiecePriority bool    `json:"f_l_piece_prio"`
 }
 
 //Torrent holds a torrent object from qbittorrent
@@ -50,7 +50,7 @@ type Torrent struct {
 	SeedingTime        int     `json:"seeding_time"`
 	Seeds              int     `json:"seeds"`
 	SeedsTotal         int     `json:"seeds_total"`
-	ShareRatio         float64 `json:"share_ratio"`
+	ShareRatio         float32 `json:"share_ratio"`
 	TimeElapsed        int     `json:"time_elapsed"`
 	TotalDl            int     `json:"total_downloaded"`
 	TotalDlSession     int     `json:"total_downloaded_session"`
