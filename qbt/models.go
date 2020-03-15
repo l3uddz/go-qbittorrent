@@ -69,14 +69,14 @@ type Torrent struct {
 
 //Tracker holds a tracker object from qbittorrent
 type Tracker struct {
-	Msg           string `json:"msg"`
-	NumPeers      int64  `json:"num_peers"`
-	NumSeeds      int64  `json:"num_seeds"`
-	NumLeeches    int64  `json:"num_leeches"`
-	NumDownloaded int64  `json:"num_downloaded"`
-	Tier          string `json:"tier"`
-	Status        int64  `json:"status"`
-	URL           string `json:"url"`
+	Msg           string      `json:"msg"`
+	NumPeers      int64       `json:"num_peers"`
+	NumSeeds      int64       `json:"num_seeds"`
+	NumLeeches    int64       `json:"num_leeches"`
+	NumDownloaded int64       `json:"num_downloaded"`
+	Tier          interface{} `json:"tier"`
+	Status        int64       `json:"status"`
+	URL           string      `json:"url"`
 }
 
 //WebSeed holds a webseed object from qbittorrent
