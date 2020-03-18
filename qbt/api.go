@@ -285,7 +285,7 @@ func (client *Client) ApplicationVersion() (version string, err error) {
 }
 
 //WebAPIVersion of the qbittorrent client
-func (client *Client) WebAPIVersion() (version string, err error) {
+func (client *Client) WebAPIVersion() (version float32, err error) {
 	resp, err := client.get("api/v2/app/webapiVersion", nil)
 	if err != nil {
 		return version, wrapper.Wrap(err, "failed webapiVersion request")
