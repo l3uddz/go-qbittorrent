@@ -95,12 +95,8 @@ type TorrentFile struct {
 	PieceRange   []int64 `json:"piece_range"`
 }
 
-//Sync holds the sync response struct which contains
-//the server state and a map of infohashes to Torrents
+// Sync holds server state that we are interested in
 type Sync struct {
-	Categories  []string `json:"categories"`
-	FullUpdate  bool     `json:"full_update"`
-	Rid         int64    `json:"rid"`
 	ServerState struct {
 		ConnectionStatus  string `json:"connection_status"`
 		DhtNodes          int64  `json:"dht_nodes"`
@@ -115,7 +111,6 @@ type Sync struct {
 		UseAltSpeedLimits bool   `json:"use_alt_speed_limits"`
 		FreeSpaceOnDisk   int64  `json:"free_space_on_disk"`
 	} `json:"server_state"`
-	Torrents map[string]Torrent `json:"torrents"`
 }
 
 type BuildInfo struct {
