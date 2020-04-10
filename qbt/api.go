@@ -391,6 +391,18 @@ func (client *Client) PeerLogs(filters map[string]string) (logs []PeerLog, err e
 }
 
 // TODO: Sync Endpoints
+func (client *Client) SyncMainData() (state Sync, err error) {
+	resp, err := client.get("api/v2/sync/maindata", map[string]string{"rid": "0"})
+	if err != nil {
+		return state, wrapper.Wrap(err, "failed maindata request")
+	}
+
+	if err := json.NewDecoder(resp.Body).Decode(&state); err != nil {
+		return state, wrapper.Wrap(err, "failed decoding maindata response")
+	}
+
+	return state, nil
+}
 
 // TODO: Transfer Endpoints
 
