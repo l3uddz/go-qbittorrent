@@ -120,7 +120,34 @@ func (client *Client) post(endpoint string, opts map[string]string) (*http.Respo
 	}
 
 	return resp, nil
+}
 
+//post will perform a POST request with no content-type specified
+func (client *Client) postUrlEncoded(endpoint string, opts map[string]string) (*http.Response, error) {
+	form := url.Values{}
+	for k, v := range opts {
+		form.Add(k, v)
+	}
+
+	req, err := http.NewRequest("POST", client.URL+endpoint, strings.NewReader(form.Encode()))
+	if err != nil {
+		return nil, wrapper.Wrap(err, "failed to build request")
+	}
+
+	// add the content-type so qbittorrent knows what to expect
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	// add user-agent header to allow qbittorrent to identify us
+	req.Header.Set("User-Agent", "go-qbittorrent v0.1")
+	// add content length
+	req.Header.Set("Content-Length", strconv.Itoa(len(form.Encode())))
+
+	// add optional parameters that the user wants
+	resp, err := client.http.Do(req)
+	if err != nil {
+		return nil, wrapper.Wrap(err, "failed to perform request")
+	}
+
+	return resp, nil
 }
 
 //postMultipart will perform a multiple part POST request
@@ -944,7 +971,7 @@ func (client *Client) SetTorrentCategory(hashes []string, category string) (bool
 		"hashes":   delimit(hashes, "|"),
 		"category": category,
 	}
-	resp, err := client.post("api/v2/torrents/setCategory", opts)
+	resp, err := client.postUrlEncoded("api/v2/torrents/setCategory", opts)
 	if err != nil {
 		return false, wrapper.Wrap(err, "failed torrentsSetCategory request")
 	}
